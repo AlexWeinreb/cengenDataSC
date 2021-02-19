@@ -1,0 +1,56 @@
+---
+output: github_document
+---
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# cengenDataSC
+
+
+
+Data from the CeNGEN project as R objects.
+
+
+## Installation
+
+Install from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("AlexWeinreb/cengenDataSC")
+```
+## Example
+
+Use `data()` to load the dataset of interest:
+
+```{r}
+data("cengen_sc_2", package = "cengenDataSC")
+
+dim(cengen_sc_2)
+```
+
+You can use the binarized matrix to mask the TPM matrix, and obtain the tables as available on the website:
+
+```{r}
+data("cengen_TPM", package = "cengenDataSC")
+
+cengen_TPM <- cengen_TPM[rownames(cengen_sc_2), - which(endsWith(colnames(cengen_TPM), "stressed"))]
+
+(cengen_sc_2 * cengen_TPM)[1005:1010,1:5]
+
+```
+
+## Additional informations and citation
+
+Information on the website: https://cengen.org
+
+See the preprint describing the data: [Taylor *et al.*, Molecular topography of an entire nervous system](https://www.biorxiv.org/content/10.1101/2020.12.15.422897v2).
+
