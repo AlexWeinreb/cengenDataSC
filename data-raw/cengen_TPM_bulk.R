@@ -54,5 +54,5 @@ res <- cbind(cengen_TPM[ , - which(colnames(cengen_TPM) %in% c('VD_DD'))],
                          new_columns)
 
 
-cengen_TPM_bulk <- res[,order(colnames(res))]
+cengen_TPM_bulk <- round(res[,order(colnames(res))])
 usethis::use_data(cengen_TPM_bulk, overwrite = TRUE)
