@@ -69,7 +69,18 @@ total number of cells in each cluster (it is thus not a measure of expression le
 
 The dataset named `cengen_xx` indicates the expression levels are given with normalization `xx`.
 The dataset named `cengen_xx_bulk` contains the same values as `cengen_xx`, but the columns names
-have been changed to match those of bulk sequencing (some subtypes are not separate).
+have been changed to match those of bulk sequencing (see below).
+}
+
+\section{'Bulk' versions}{
+
+The resolution of this single-cell dataset is not always consistent with annotation of other bulk
+datasets, making comparisons more tedious. The `cengen_xx_bulk` are convenience objects where the
+column names match the usual neuron names.
+
+Specifically, for `cengen_TPM_bulk`, the single cells have been aggregated by (bulk) neuron type
+then the TPM computed. For the other normalization methods, the normalized values have been averaged or
+duplicated after normalization. Note that, while this usually doesn't lead to large changes, it is incorrect.
 }
 
 \section{Note}{
